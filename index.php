@@ -2,18 +2,29 @@
 
 include('mylib.php');
 
-// setup variables
-$where = '';
-
+// setup db
 mysql_connect('127.0.0.1', 'root', 'mrpaint4321') or die('Không kết nối được db');
 mysql_select_db('k53cc') or die('Fuck select db');
 mysql_query('
 	CREATE TABLE IF NOT EXISTS `truong` (
 		`ma` varchar(255) primary key,
-		`truong` text,
-		`diadiem` text
+		`ten` text,
+		`dia_diem` text
 	);
 ');
+mysql_query('
+	CREATE TABLE IF NOT EXISTS `dia_diem` (
+		`ma_dia_diem` varchar(255) primary key,
+		`ten_dia_diem` text
+	);
+');
+// setup db - finished
+
+// setup variables
+$where = '';
+$ten = '';
+$ma = '';
+$dia_diem = '';
 
 echo formHt_open('Quản lý trường');
 
